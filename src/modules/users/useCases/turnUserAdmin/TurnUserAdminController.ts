@@ -10,7 +10,7 @@ class TurnUserAdminController {
 
     try {
       const updatedUser = this.turnUserAdminUseCase.execute({
-        user_id: String(user_id),
+        user_id,
       });
 
       return response.status(201).json(updatedUser);
