@@ -9,6 +9,10 @@ class ListAllUsersUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
   execute({ user_id }: IRequest): User[] {
+    if (!user_id) {
+      throw new Error("User not signed");
+    }
+
     const user = this.usersRepository.findById(user_id);
     if (!user.admin) {
       throw new Error("User not authorized");
